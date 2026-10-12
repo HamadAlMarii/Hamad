@@ -5,55 +5,274 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>حمد الجعيدي · متخصص تسويق رقمي</title>
 <meta name="description" content="حمد الجعيدي، متخصص تسويق رقمي بخبرة تتجاوز 12 سنة في الاستراتيجية الرقمية والتجارة الإلكترونية والسوشال ميديا وإدارة العلامات.">
+<meta name="theme-color" content="#031A2B">
+<meta property="og:type" content="website">
+<meta property="og:title" content="حمد الجعيدي · متخصص تسويق رقمي">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23003556'/%3E%3Ctext x='32' y='47' font-size='40' text-anchor='middle' fill='%234DB8E8' font-family='sans-serif' font-weight='700'%3E%D8%AD%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0F1214;--ink:#ECE8DF;--mute:#9AA3A8;--line:#2A3136;--gold:#C9B27C;
+:root{--bg:#031A2B;--ink:#F2F7FA;--blue:#007CB7;--sky:#4DB8E8;
+ --line:rgba(183,204,216,.16);--mute:#9DB4C3;--silver:#B7CCD8;
  --f:'IBM Plex Sans Arabic',Tahoma,'Segoe UI',system-ui,sans-serif}
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:var(--f);line-height:1.8;-webkit-font-smoothing:antialiased}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);line-height:1.8;-webkit-font-smoothing:antialiased;overflow-x:hidden;text-align:start}
 a{color:inherit}
-:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
-main{max-width:980px;margin:0 auto;padding:12vh 28px 80px;display:grid;gap:56px}
-h1{margin:0;font-size:clamp(56px,13vw,150px);line-height:.95;font-weight:700;letter-spacing:-.01em}
-.en{direction:ltr;text-align:right;margin-top:18px;color:var(--gold);font-size:15px;letter-spacing:.28em}
-.lead{font-size:clamp(19px,2.4vw,24px);max-width:30em;margin:0;color:var(--ink);font-weight:300}
-.rule{height:1px;background:var(--line);border:0;margin:0}
-.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
-.metric{padding:6px 0 6px 28px}
-.metric + .metric{padding-right:28px;border-right:1px solid var(--line)}
-.metric b{display:block;font-size:clamp(30px,5vw,52px);font-weight:600;line-height:1.1;color:var(--gold);font-variant-numeric:tabular-nums}
-.metric span{display:block;margin-top:6px;color:var(--mute);font-size:15px}
-.note{margin:0;color:var(--mute);font-size:13.5px}
-.links{display:flex;gap:28px;flex-wrap:wrap;font-size:17px}
-.links a{text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:3px}
-.links a:hover{color:var(--gold)}
-@media (max-width:640px){
- .metrics{grid-template-columns:1fr;gap:22px}
- .metric,.metric + .metric{padding:0;border:0}
- main{padding-top:9vh}
+:focus-visible{outline:2px solid var(--sky);outline-offset:4px}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(20px,5vw,56px)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.prog{position:fixed;inset:0 0 auto 0;height:3px;background:var(--sky);transform:scaleX(var(--p,0));transform-origin:right;z-index:50}
+html[dir=ltr] .prog{transform-origin:left}
+
+.herozone{position:relative;overflow:hidden}
+.aurora{position:absolute;inset:-15% -10% 0;z-index:0;pointer-events:none;filter:blur(70px)}
+.aurora i{position:absolute;border-radius:50%;will-change:transform}
+.aurora i:nth-child(1){width:58vw;height:58vw;top:-8%;inset-inline-start:-12%;background:radial-gradient(circle,color-mix(in srgb,var(--blue) 55%,transparent),transparent 66%);animation:d1 24s ease-in-out infinite alternate}
+.aurora i:nth-child(2){width:46vw;height:46vw;top:22%;inset-inline-end:-10%;background:radial-gradient(circle,color-mix(in srgb,color-mix(in srgb,var(--blue) 40%,#000) 95%,transparent),transparent 68%);animation:d2 28s ease-in-out infinite alternate}
+.aurora i:nth-child(3){width:34vw;height:34vw;top:48%;inset-inline-start:30%;background:radial-gradient(circle,color-mix(in srgb,var(--sky) 22%,transparent),transparent 68%);animation:d3 21s ease-in-out infinite alternate}
+@keyframes d1{to{transform:translate3d(16vw,12vh,0) scale(1.18)}}
+@keyframes d2{to{transform:translate3d(-14vw,-9vh,0) scale(1.1)}}
+@keyframes d3{to{transform:translate3d(-12vw,8vh,0) scale(1.3)}}
+.top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding-block:22px}
+.mono{font-weight:700;font-size:20px;color:var(--sky);text-decoration:none;line-height:1}
+.lang{background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:6px 16px;font:inherit;font-size:14px;cursor:pointer;transition:border-color .25s,color .25s}
+.lang:hover{border-color:var(--sky);color:var(--sky)}
+.hero{position:relative;z-index:1;min-height:calc(100svh - 80px);display:flex;flex-direction:column;justify-content:flex-end;padding-block:8vh 9vh}
+h1{margin:0;font-weight:700;font-size:clamp(68px,15vw,196px);line-height:.98}
+html[lang=en] h1{letter-spacing:-.025em;line-height:.92}
+.name2{margin-top:20px;color:var(--sky);font-size:15px;font-weight:500}
+html[lang=ar] .name2{direction:ltr;text-align:end;letter-spacing:.3em}
+html[lang=en] .name2{letter-spacing:0;font-size:18px}
+.role{margin:clamp(34px,6vh,64px) 0 0;font-size:clamp(22px,3.2vw,36px);font-weight:600;line-height:1.35}
+.focus{margin:10px 0 0;font-size:clamp(18px,2.2vw,25px);color:var(--silver);font-weight:400;min-height:1.9em}
+.focus b{color:var(--sky);font-weight:600;display:inline-block}
+.swap{animation:swap .65s cubic-bezier(.2,.7,.2,1) both}
+@keyframes swap{from{opacity:0;transform:translateY(.7em)}to{opacity:1;transform:none}}
+.lead{margin:14px 0 0;max-width:30em;font-size:clamp(17px,1.9vw,21px);font-weight:300;color:var(--mute)}
+
+section{border-top:1px solid var(--line);padding-block:clamp(56px,9vw,104px)}
+h2{margin:0 0 clamp(28px,4.5vw,52px);font-size:clamp(26px,3.4vw,38px);font-weight:700;line-height:1.2}
+
+.companies{overflow:hidden;padding-bottom:clamp(40px,7vw,84px)}
+.marq{direction:ltr;display:grid;gap:clamp(8px,1.6vw,22px);user-select:none}
+.track{display:flex;width:max-content;will-change:transform}
+.set{display:flex;align-items:center;flex:none;font-weight:700;line-height:1.2;white-space:nowrap}
+.r1 .set{font-size:clamp(56px,10vw,140px)}
+.r2 .set{font-size:clamp(42px,7vw,100px)}
+.t{display:inline-block;transition:color .3s,-webkit-text-stroke-color .3s}
+.r1 .t{color:transparent;-webkit-text-stroke:1.5px var(--silver)}
+.r1 .t:hover{color:var(--sky);-webkit-text-stroke-color:var(--sky)}
+.r2 .t{color:var(--ink)}
+.r2 .t:nth-of-type(even){color:var(--sky)}
+.dot{display:inline-block;flex:none;width:.2em;height:.2em;border-radius:50%;background:var(--blue);margin-inline:.5em}
+.marq.static .track{width:auto;flex-wrap:wrap}
+.marq.static .set{flex-wrap:wrap}
+
+.caps{display:grid;grid-template-columns:repeat(2,1fr);gap:0 clamp(28px,6vw,80px);margin:0;padding:0;list-style:none}
+.cap{position:relative;padding-block:22px;border-top:1px solid var(--line)}
+.cap::after{content:"";position:absolute;inset-inline-start:0;top:-1px;height:2px;width:0;background:var(--sky);transition:width .55s cubic-bezier(.2,.7,.2,1)}
+.cap:hover::after{width:100%}
+.cap h3{margin:0 0 4px;font-size:22px;font-weight:600;transition:transform .35s,color .35s}
+html[dir=rtl] .cap:hover h3{transform:translateX(-8px);color:var(--sky)}
+html[dir=ltr] .cap:hover h3{transform:translateX(8px);color:var(--sky)}
+.cap p{margin:0;color:var(--mute);font-size:16.5px}
+
+.about p{margin:0;max-width:33em;font-size:clamp(19px,2.2vw,24px);font-weight:300;line-height:1.95;white-space:pre-line}
+.contact p{margin:0 0 22px;color:var(--mute);font-size:18px}
+.cta{display:inline-block;margin-inline-end:18px;padding:2px .25em 6px;font-size:clamp(28px,5vw,56px);font-weight:700;text-decoration:none;
+ background:linear-gradient(var(--sky),var(--sky)) left bottom/100% 3px no-repeat;transition:background-size .45s cubic-bezier(.2,.7,.2,1),color .45s}
+.cta:hover{background-size:100% 100%;color:var(--bg)}
+footer{border-top:1px solid var(--line);padding-block:28px 40px;color:var(--mute);font-size:14px}
+
+.rv{opacity:0;transform:translateY(26px);transition:opacity .85s cubic-bezier(.2,.7,.2,1),transform .85s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0)*90ms)}
+.rv.on{opacity:1;transform:none}
+html.noanim .rv{opacity:1;transform:none;transition:none}
+@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.in{animation:up .95s cubic-bezier(.2,.7,.2,1) both}
+.in.d1{animation-delay:.08s}.in.d2{animation-delay:.22s}.in.d3{animation-delay:.36s}.in.d4{animation-delay:.5s}
+@media (prefers-reduced-motion:reduce){
+ .in,.swap{animation:none}.aurora i{animation:none}
+ .rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}
 }
+@media (max-width:720px){.caps{grid-template-columns:1fr}}
 </style>
+<noscript><style>.rv{opacity:1;transform:none}</style></noscript>
 </head>
 <body>
-<main>
- <header>
-  <h1>حمد الجعيدي</h1>
-  <div class="en">HAMAD AL-JAIDI</div>
- </header>
- <p class="lead">متخصص تسويق رقمي بخبرة تتجاوز 12 سنة في الاستراتيجية الرقمية والتجارة الإلكترونية والسوشال ميديا وإدارة العلامات التجارية.</p>
- <hr class="rule">
- <section aria-label="أرقام من مسيرتي المهنية">
-  <div class="metrics">
-   <div class="metric"><b>2,300%</b><span>عائد على الاستثمار</span></div>
-   <div class="metric"><b>+500K</b><span>مجتمع رقمي بنيته</span></div>
-   <div class="metric"><b>70%</b><span>نمو في المبيعات</span></div>
+<div class="prog" id="prog" aria-hidden="true"></div>
+
+<div class="herozone">
+ <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+ <div class="wrap">
+  <header class="top">
+   <a class="mono" href="#" id="mono">ح.ج</a>
+   <button class="lang" id="lang" type="button">EN</button>
+  </header>
+  <div class="hero">
+   <div class="in d1">
+    <h1 id="name">حمد الجعيدي</h1>
+    <div class="name2" id="name2">HAMAD AL-JAIDI</div>
+   </div>
+   <p class="role in d2" id="role">متخصص تسويق رقمي</p>
+   <p class="focus in d3"><span id="focusLbl">أعمل على</span> <b id="rot" aria-live="off"></b></p>
+   <p class="lead in d4" id="lead"></p>
   </div>
-  <p class="note" style="margin-top:18px">أرقام حققتها عبر مناصب سابقة.</p>
- </section>
- <nav class="links" aria-label="روابط">
-  <a href="https://www.linkedin.com/in/hamadaljaidi" target="_blank" rel="noopener">LinkedIn</a>
- </nav>
-</main>
+ </div>
+</div>
+
+<div id="sections"></div>
+
+<footer><div class="wrap" id="foot"></div></footer>
+
+<script src="site-default.js"></script>
+<script>
+/* ====== الإعدادات ====== */
+const SB_URL='https://msjsuhjgdedihzxtbems.supabase.co';
+const SB_KEY='sb_publishable_SBktBUVHARZmYUFezgOXWg_FEmmUqOj';
+const D=window.SITE_DEFAULT, merge=window.hjMerge;
+const PREVIEW=new URLSearchParams(location.search).has('preview');
+const REDUCE=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const safeUrl=u=>{u=String(u||'').trim();return /^(https?:\/\/|mailto:|tel:)/i.test(u)?u:'#'};
+if(PREVIEW) document.documentElement.classList.add('noanim');
+
+let C=D,lang='ar',wi=0,wt;
+try{lang=localStorage.getItem('hj-lang')||'ar'}catch(e){}
+if(lang!=='ar'&&lang!=='en')lang='ar';
+
+/* ====== البناء ====== */
+const SEC={
+ companies:(L)=>`<section class="companies" id="companies" aria-labelledby="h_co">
+  <div class="wrap"><h2 id="h_co" class="rv">${esc(L.h_co)}</h2></div>
+  <div class="marq" id="marq" aria-hidden="true"><div class="track r1" data-dir="-1" data-speed="0.9"></div><div class="track r2" data-dir="1" data-speed="0.7"></div></div>
+  <ul class="sr">${C.companies.map(n=>`<li>${esc(n)}</li>`).join('')}</ul></section>`,
+ work:(L)=>`<section id="work"><div class="wrap"><h2 class="rv">${esc(L.h_work)}</h2><ul class="caps">${
+  (L.caps||[]).map((c,i)=>`<li class="cap rv" style="--i:${i}"><h3>${esc(c.t)}</h3><p>${esc(c.d)}</p></li>`).join('')}</ul></div></section>`,
+ about:(L)=>`<section id="about" class="about"><div class="wrap"><h2 class="rv">${esc(L.h_about)}</h2><p class="rv" style="--i:1">${esc(L.about)}</p></div></section>`,
+ contact:(L)=>`<section id="contact" class="contact"><div class="wrap"><h2 class="rv">${esc(L.h_contact)}</h2><p class="rv" style="--i:1">${esc(L.contact_p)}</p>${
+  (C.links||[]).map((k,i)=>`<a class="cta rv" style="--i:${i+2}" href="${esc(safeUrl(k.url))}" target="_blank" rel="noopener">${esc(k.label)}</a>`).join('')}</div></section>`
+};
+let io=null;
+function render(){
+ const L=Object.assign({},D[lang],C[lang]||{}),r=document.documentElement;
+ const th=C.theme||D.theme;
+ r.style.setProperty('--bg',th.bg);r.style.setProperty('--sky',th.sky);r.style.setProperty('--blue',th.blue);r.style.setProperty('--ink',th.ink);
+ const tc=document.querySelector('meta[name=theme-color]');if(tc)tc.content=th.bg;
+ r.lang=lang;r.dir=lang==='en'?'ltr':'rtl';
+ document.title=L.title;
+ const md=document.querySelector('meta[name=description]');if(md)md.content=L.desc||'';
+ const og=document.querySelector('meta[property="og:title"]');if(og)og.content=L.title;
+ [['mono'],['name'],['name2'],['role'],['lead']].forEach(([k])=>{$(k).textContent=L[k]||''});
+ $('focusLbl').textContent=L.focus||'';$('foot').textContent=L.foot||'';
+ const b=$('lang');b.textContent=lang==='en'?'عربي':'EN';
+ b.setAttribute('aria-label',lang==='en'?'التحويل إلى العربية':'Switch to English');
+ $('sections').innerHTML=(C.order||D.order).filter(k=>SEC[k]&&!(C.hidden||{})[k]).map(k=>SEC[k](L)).join('');
+ observeReveals();buildTracks();startRot();
+}
+
+/* الكلمة المتبدلة */
+function rotate(){
+ const el=$('rot'),ws=(C.words&&C.words[lang])||D.words[lang];if(!ws.length){el.textContent='';return}
+ el.textContent=ws[wi%ws.length];wi++;
+ if(!REDUCE){el.classList.remove('swap');void el.offsetWidth;el.classList.add('swap')}
+}
+function startRot(){clearInterval(wt);wi=0;rotate();if(!REDUCE)wt=setInterval(rotate,2600)}
+
+/* شريط الشركات: صفّان باتجاهين متعاكسين يتسارعان مع التمرير */
+let marq=null,tracks=[],boost=0,lastY=scrollY,last=performance.now(),hover=false,raf=0,mio=null;
+function buildTracks(){
+ if(mio){mio.disconnect();mio=null}
+ cancelAnimationFrame(raf);raf=0;
+ marq=$('marq');tracks=marq?[...marq.querySelectorAll('.track')]:[];
+ if(!marq) return;
+ const names=(C.companies&&C.companies.length)?C.companies:D.companies;
+ marq.classList.toggle('static',REDUCE);
+ tracks.forEach((tr,idx)=>{
+  tr.innerHTML='';
+  const list=idx===1?names.slice().reverse():names;
+  const fill=set=>list.forEach(n=>{
+   const s=document.createElement('span');s.className='t';s.textContent=n;set.appendChild(s);
+   const dt=document.createElement('i');dt.className='dot';set.appendChild(dt);
+  });
+  const set=document.createElement('div');set.className='set';fill(set);tr.appendChild(set);
+  if(REDUCE) return;
+  let guard=0;while(set.scrollWidth<innerWidth*1.3&&guard++<10)fill(set);
+  tr.appendChild(set.cloneNode(true));
+  tr._w=set.scrollWidth;tr._x=(+tr.dataset.dir<0)?0:-tr._w;
+ });
+ if(REDUCE) return;
+ marq.addEventListener('pointerenter',()=>hover=true);
+ marq.addEventListener('pointerleave',()=>hover=false);
+ mio=new IntersectionObserver(es=>{
+  if(es[0].isIntersecting&&!raf){last=performance.now();raf=requestAnimationFrame(frame)}
+  if(!es[0].isIntersecting&&raf){cancelAnimationFrame(raf);raf=0}
+ },{rootMargin:'200px 0px'});
+ mio.observe(marq);
+}
+function frame(t){
+ const dt=Math.min(50,t-last)/16;last=t;
+ const y=scrollY,vel=Math.abs(y-lastY);lastY=y;
+ boost+=(Math.min(vel,70)*.14-boost)*.1;
+ tracks.forEach(tr=>{
+  if(!tr._w) return;
+  const dir=+tr.dataset.dir,sp=(+tr.dataset.speed+boost)*(hover?.2:1)*dt;
+  tr._x+=dir*sp;
+  if(dir<0&&tr._x<=-tr._w)tr._x+=tr._w;
+  if(dir>0&&tr._x>=0)tr._x-=tr._w;
+  tr.style.transform=`translate3d(${tr._x}px,0,0)`;
+ });
+ raf=requestAnimationFrame(frame);
+}
+let rs;addEventListener('resize',()=>{clearTimeout(rs);rs=setTimeout(buildTracks,200)});
+
+/* الظهور عند التمرير + شريط التقدم */
+function observeReveals(){
+ if(io)io.disconnect();
+ io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.15,rootMargin:'0px 0px -6% 0px'});
+ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+}
+const prog=$('prog');
+function onScroll(){const h=document.documentElement.scrollHeight-innerHeight;prog.style.setProperty('--p',h>0?Math.min(1,scrollY/h):0)}
+addEventListener('scroll',onScroll,{passive:true});
+
+/* اللغة */
+$('lang').addEventListener('click',()=>{
+ lang=lang==='en'?'ar':'en';
+ try{localStorage.setItem('hj-lang',lang)}catch(e){}
+ render();
+});
+
+/* المحتوى من لوحة التحكم */
+async function loadRemote(){
+ const ctl=new AbortController(),to=setTimeout(()=>ctl.abort(),4000);
+ try{
+  const r=await fetch(SB_URL+'/rest/v1/site_content?id=eq.main&select=value',{headers:{apikey:SB_KEY},signal:ctl.signal});
+  if(!r.ok) return;
+  const j=await r.json();
+  if(j[0]&&j[0].value){
+   try{localStorage.setItem('hj-site',JSON.stringify(j[0].value))}catch(e){}
+   C=merge(D,j[0].value);render();
+  }
+ }catch(e){}finally{clearTimeout(to)}
+}
+if(PREVIEW){
+ /* وضع المعاينة داخل لوحة التحكم: يستقبل المحتوى من الصفحة الأم */
+ addEventListener('message',e=>{
+  if(e.origin!==location.origin||!e.data) return;
+  if(e.data.type==='hj-lang'){lang=e.data.lang==='en'?'en':'ar';render();return}
+  if(e.data.type!=='hj-preview') return;
+  C=merge(D,e.data.content||{});render();
+ });
+ render();
+ try{parent.postMessage({type:'hj-ready'},location.origin)}catch(e){}
+}else{
+ let cached=null;try{cached=JSON.parse(localStorage.getItem('hj-site')||'null')}catch(e){}
+ C=merge(D,cached||{});
+ render();onScroll();
+ loadRemote();
+}
+</script>
 </body>
 </html>
