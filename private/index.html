@@ -122,6 +122,26 @@ tr.cur td{background:color-mix(in srgb,var(--gold) 10%,transparent);font-weight:
 .tile.full{border-color:color-mix(in srgb,var(--ok) 60%,var(--line))}
 .tile.part{border-color:color-mix(in srgb,var(--warn) 55%,var(--line))}
 .tile .pb{height:5px;margin-top:5px}
+/* متتبع العادات */
+.hbgrid table{min-width:0;width:max-content;font-size:12.5px}
+.hbgrid th,.hbgrid td{padding:3px 2px;text-align:center}
+.hbgrid .hbn{position:sticky;right:0;z-index:1;background:var(--panel2);text-align:start;padding:6px 10px;min-width:120px;max-width:160px;font-size:13.5px;color:var(--ink);font-weight:500;border-top:1px solid var(--line)}
+.hbgrid .hbw{border-inline-start:1px solid var(--line);color:var(--gold)}
+.hbgrid .hbd{min-width:26px;font-weight:500;line-height:1.3}
+.hbgrid .hbd span{display:block;font-size:10.5px;color:var(--mute)}
+.hbgrid .hbd.now{color:var(--gold)}
+.hbgrid .hbt{padding:0 10px;font-weight:600;white-space:nowrap}
+.hbgrid .hbt small{color:var(--mute);font-weight:400}
+.hb{width:22px;height:22px;border-radius:6px;border:1.5px solid var(--line);background:var(--bg);cursor:pointer;padding:0;display:block;margin:auto}
+.hb:hover{border-color:var(--gold)}
+.hb[aria-pressed="true"]{background:var(--ok);border-color:var(--ok)}
+.hb.fut{opacity:.35;cursor:default}
+.hbbar{width:14px;height:34px;margin:auto;background:var(--bg);border-radius:4px;display:flex;align-items:flex-end;overflow:hidden}
+.hbbar i{display:block;width:100%;background:var(--gold)}
+.hbs{width:26px;height:24px;border:1px solid var(--line);background:var(--bg);border-radius:6px;cursor:pointer;padding:0;font-size:11.5px;font-variant-numeric:tabular-nums}
+.hbs:hover:not(:disabled){border-color:var(--gold)}.hbs:disabled{opacity:.35;cursor:default}
+.lnk{background:none;border:0;padding:0;cursor:pointer;text-align:start;font:inherit;color:inherit}
+.lnk:hover{color:var(--gold)}
 /* النوافذ */
 dialog{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:18px;padding:0;width:min(560px,92vw);max-height:90vh}
 dialog::backdrop{background:rgba(0,0,0,.65)}
@@ -189,6 +209,7 @@ dialog::backdrop{background:rgba(0,0,0,.65)}
 <script src="core.js"></script>
 <script src="m-tasks.js"></script>
 <script src="m-life.js"></script>
+<script src="m-habits.js"></script>
 <script src="m-know.js"></script>
 <script src="m-site.js"></script>
 <script src="m-home.js"></script>

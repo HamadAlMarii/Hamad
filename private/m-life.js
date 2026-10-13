@@ -311,10 +311,6 @@ function actStreak(){
  while(days.has(d)){n++;d=addDays(d,-1)}return n;
 }
 function weekMinutes(ws){const we=addDays(ws,6);return sum(acts().filter(a=>a.data.date>=ws&&a.data.date<=we),a=>a.data.minutes)}
-function habitStreak(h){
- const days=h.data.days||{};let d=days[todayS()]?todayS():addDays(todayS(),-1),n=0;
- while(days[d]){n++;d=addDays(d,-1)}return n;
-}
 function renderActivity(el){
  const st=settings(),ws=weekStart(),wm=weekMinutes(ws),all=acts();
  const wsess=all.filter(a=>a.data.date>=ws&&a.data.date<=addDays(ws,6)).length;
@@ -323,9 +319,8 @@ function renderActivity(el){
  const types=Object.keys(byType).sort((a,b)=>byType[b]-byType[a]),maxT=Math.max(1,...Object.values(byType));
  const weeks=[];for(let i=7;i>=0;i--)weeks.push(addDays(ws,-7*i));
  const wvals=weeks.map(weekMinutes),maxW=Math.max(st.weekMin,...wvals,1);
- const habits=ofKind('habit'),last7=[];for(let i=6;i>=0;i--)last7.push(addDays(todayS(),-i));
+ const habits=ofKind('habit');
  const recent=all.slice().sort((a,b)=>a.data.date<b.data.date?1:-1).slice(0,12);
- const dow=['أحد','إثنين','ثلاثاء','أربعاء','خميس','جمعة','سبت'];
  el.innerHTML=`
   <div class="stats">
    ${statCard('دقائق هذا الأسبوع',`${fmt(wm)} <small>من ${fmt(st.weekMin)}</small>`,pb(pct(wm,st.weekMin),wm>=st.weekMin?'var(--ok)':''),wm>=st.weekMin?'ok':'info')}
@@ -343,11 +338,7 @@ function renderActivity(el){
    <div class="panel"><h2>آخر 8 أسابيع (دقائق)</h2>${weeks.map((w,i)=>`<div class="brow"><span>${fmtD(w)}</span><div>${pb(pct(wvals[i],maxW),wvals[i]>=st.weekMin?'var(--ok)':'')}</div><span class="num" style="font-size:13px;color:var(--mute)">${fmt(wvals[i])}</span></div>`).join('')}</div>
    <div class="panel"><h2>أنواع النشاط (30 يوماً)</h2>${types.length?types.map(t=>`<div class="brow"><span>${esc(t)}</span><div>${pb(pct(byType[t],maxT))}</div><span class="num" style="font-size:13px;color:var(--mute)">${fmt(byType[t])}</span></div>`).join(''):emptyBox('سجل أول نشاط.')}</div>
   </div>
-  <div class="panel"><div class="ph"><div><h2>العادات اليومية</h2><p class="hint" style="margin:0">اضغط الدائرة لتأشير اليوم.</p></div>${ab('addHabit','+ عادة','gold')}</div>
-   ${habits.length?habits.map(h=>`<div class="li"><div><div class="tt">${esc(h.data.name)} <span class="tag gold">${habitStreak(h)} يوم متتالي</span></div>
-     <div style="display:flex;gap:6px;margin-top:6px;align-items:center">${last7.map(d=>`<button class="chk" data-act="hday:${h.id}:${d}" aria-pressed="${!!(h.data.days||{})[d]}" title="${fmtD(d)}" style="width:26px;height:26px"></button>`).join('')}</div>
-     <div class="ss" style="margin-top:4px;display:flex;gap:6px">${last7.map(d=>`<span style="width:26px;text-align:center">${dow[parseYmd(d).getDay()].slice(0,2)}</span>`).join('')}</div></div>
-     <div class="aa">${ab('editHabit:'+h.id,'✎')}</div></div>`).join(''):emptyBox('أضف عادات مثل: أذكار الصباح، شرب الماء، النوم المبكر، المشي.')}</div>
+  <div class="panel"><div class="ph"><div><h2>العادات اليومية</h2><p class="hint" style="margin:0">${habits.length} عادات، ${habits.filter(h=>(h.data.days||{})[todayS()]).length} منها اليوم.</p></div><button class="btn sm gold" data-go="habits">افتح متتبع العادات</button></div></div>
   <div class="panel"><h2>آخر الجلسات</h2>${recent.length?recent.map(a=>li(`${esc(a.data.type)} · ${fmt(a.data.minutes)} دقيقة${a.data.km?` · ${a.data.km} كم`:''}`,fmtDY(a.data.date),ab('editAct:'+a.id,'✎'))).join(''):emptyBox('لا توجد جلسات بعد.')}</div>`;
  el.onsubmit=async e=>{
   if(e.target.id!=='acForm')return;e.preventDefault();
@@ -368,16 +359,6 @@ function renderActivity(el){
      {k:'type',l:'النوع',t:'select',o:ATYPES.map(t=>[t,t])},{k:'minutes',l:'المدة (دقيقة)',t:'number',req:1},{k:'km',l:'المسافة (كم)',t:'number'},{k:'date',l:'التاريخ',t:'date',req:1}]});
     if(!r)return;
     if(r.__del) await removeItem(ex); else await saveItem(ex,Object.assign({},ex.data,r));
-   }
-   if(act==='addHabit'||act==='editHabit'){
-    const r=await openForm({title:ex?'تعديل عادة':'عادة جديدة',values:ex?ex.data:{},del:!!ex,fields:[{k:'name',l:'اسم العادة',req:1,full:1}]});
-    if(!r)return;
-    if(r.__del) await removeItem(ex); else await saveOrAdd(ex,'activity','habit',Object.assign({days:{}},ex?ex.data:{},r));
-   }
-   if(act==='hday'){
-    const d=parts[2],h=ITEMS.find(i=>i.id===id),days=Object.assign({},h.data.days||{});
-    if(days[d]) delete days[d]; else days[d]=1;
-    await saveItem(h,Object.assign({},h.data,{days}));
    }
    renderActivity(el);
   });
