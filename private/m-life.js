@@ -122,10 +122,11 @@ function renderFinance(el){
    const a=actOf(e);if(!a)return;
    const [act,id]=a.split(':');
    if(act==='fv'){setFV(id);return renderFinance(el)}
-   await guard(async()=>{if(await finPlanAct(act,id)) renderFinance(el)});
+   if(await finPlanAct(act,id,el)==='full') renderFinance(el);
   };
   return;
  }
+ el.oninput=null;
  const tx=monthTxns(FM),income=sum(tx.filter(x=>x.data.type==='in'),x=>x.data.amount),spent=sum(tx.filter(x=>x.data.type==='out'),x=>x.data.amount);
  const net=income-spent,rate=income>0?net/income*100:null;
  const byCat={};tx.filter(x=>x.data.type==='out').forEach(x=>{byCat[x.data.category]=(byCat[x.data.category]||0)+(+x.data.amount||0)});
