@@ -142,6 +142,35 @@ tr.cur td{background:color-mix(in srgb,var(--gold) 10%,transparent);font-weight:
 .hbs:hover:not(:disabled){border-color:var(--gold)}.hbs:disabled{opacity:.35;cursor:default}
 .lnk{background:none;border:0;padding:0;cursor:pointer;text-align:start;font:inherit;color:inherit}
 .lnk:hover{color:var(--gold)}
+/* الخطة المالية */
+.fplegend{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--mute);margin-bottom:8px}
+.fplegend i,.fptip i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-inline-end:6px;vertical-align:-1px}
+.fpchart{position:relative}
+.fpchart svg{width:100%;height:auto;display:block}
+.fpax{font-size:11px;fill:var(--mute);font-family:var(--f);font-variant-numeric:tabular-nums}
+.fpax.on{fill:var(--gold);font-weight:700}.fpax.yr{fill:var(--ink)}
+.fphit{cursor:pointer}
+.fptip{position:absolute;pointer-events:none;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:12.5px;min-width:190px;box-shadow:0 6px 20px rgba(0,0,0,.4);z-index:3}
+.fptip div{display:flex;align-items:center;gap:4px}.fptip span{margin-inline-start:auto;padding-inline-start:12px}
+.fptip .tot{border-top:1px solid var(--line);margin-top:4px;padding-top:4px;color:var(--mute)}
+.fpline{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--line)}
+.fpline:has(.chk[aria-pressed="true"]) .tt{color:var(--mute);text-decoration:line-through}
+.fpdual{position:relative;height:8px;background:var(--panel2);border-radius:5px;overflow:hidden}
+.fpdual i{position:absolute;inset-block:0;right:0;border-radius:5px}
+.fpdual .pl{background:color-mix(in srgb,var(--gold) 35%,var(--panel2))}.fpdual .pd{background:var(--ok)}
+.fpkey{display:inline-block;width:10px;height:10px;border-radius:3px;margin-inline:8px 4px;vertical-align:-1px}
+.fpkey.pl{background:color-mix(in srgb,var(--gold) 35%,var(--panel2));margin-inline-start:0}.fpkey.pd{background:var(--ok)}
+.fprow{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-top:1px solid var(--line);font-size:14px}
+.fprow:first-of-type{border-top:0}
+.fprow small{display:block;color:var(--mute);font-size:12px}
+.fprow b{white-space:nowrap;font-weight:600}
+.fpgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 16px}
+details.panel summary{cursor:pointer}
+.fptable{min-width:0;width:max-content;font-size:12.5px}
+.fptable th,.fptable td{padding:6px 8px;text-align:center;white-space:nowrap}
+.fptable .fpn{position:sticky;right:0;background:var(--panel2);text-align:start;z-index:1}
+.fptable .cur{background:color-mix(in srgb,var(--gold) 14%,transparent)}
+.fptable tfoot td,.fptable tfoot th{font-weight:600;border-top:2px solid var(--line)}
 /* النوافذ */
 dialog{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:18px;padding:0;width:min(560px,92vw);max-height:90vh}
 dialog::backdrop{background:rgba(0,0,0,.65)}
@@ -210,6 +239,7 @@ dialog::backdrop{background:rgba(0,0,0,.65)}
 <script src="m-tasks.js"></script>
 <script src="m-life.js"></script>
 <script src="m-habits.js"></script>
+<script src="m-finplan.js"></script>
 <script src="m-know.js"></script>
 <script src="m-site.js"></script>
 <script src="m-home.js"></script>

@@ -96,7 +96,10 @@ registerTab({id:'family',order:4,title:'العائلة',render:renderFamily});
 /* ====================== المالية ====================== */
 const EXPC=['سكن','طعام','مواصلات','فواتير','صحة','تعليم','ترفيه','عائلة','ادخار واستثمار','صدقة','أخرى'];
 const INCC=['راتب','دخل إضافي','أرباح','دخل آخر'];
-let FM=monthOf(todayS()),FT='all';
+let FM=monthOf(todayS()),FT='all',FV='plan';
+try{FV=localStorage.getItem('hamad-fv')||'plan'}catch(e){}
+const finHead=()=>`<div class="chips">${[['plan','الخطة المالية'],['track','المتابعة اليومية']].map(([k,l])=>`<button class="chip" data-act="fv:${k}" aria-pressed="${FV===k}">${l}</button>`).join('')}</div>`;
+function setFV(v){FV=v;try{localStorage.setItem('hamad-fv',v)}catch(e){}}
 const catsFor=t=>t==='in'?INCC:EXPC;
 function monthTxns(m){return ofKind('txn').filter(i=>monthOf(i.data.date||'')===m)}
 function billDue(b,m){const [y,mo]=m.split('-').map(Number),dim=new Date(y,mo,0).getDate();return `${m}-${pad(Math.min(Math.max(1,b.data.day||1),dim))}`}
@@ -112,6 +115,17 @@ async function markBill(b,m){
  await saveItem(b,Object.assign({},b.data,{paid}));
 }
 function renderFinance(el){
+ if(FV==='plan'){
+  renderFinPlan(el,finHead());
+  el.onsubmit=null;
+  el.onclick=async e=>{
+   const a=actOf(e);if(!a)return;
+   const [act,id]=a.split(':');
+   if(act==='fv'){setFV(id);return renderFinance(el)}
+   await guard(async()=>{if(await finPlanAct(act,id)) renderFinance(el)});
+  };
+  return;
+ }
  const tx=monthTxns(FM),income=sum(tx.filter(x=>x.data.type==='in'),x=>x.data.amount),spent=sum(tx.filter(x=>x.data.type==='out'),x=>x.data.amount);
  const net=income-spent,rate=income>0?net/income*100:null;
  const byCat={};tx.filter(x=>x.data.type==='out').forEach(x=>{byCat[x.data.category]=(byCat[x.data.category]||0)+(+x.data.amount||0)});
@@ -122,6 +136,7 @@ function renderFinance(el){
  const debts=ofKind('debt');
  const list=tx.filter(x=>FT==='all'||x.data.type===FT).sort((a,b)=>a.data.date<b.data.date?1:-1);
  el.innerHTML=`
+  ${finHead()}
   <div class="sec-note">بياناتك تُحفظ في حساب Supabase الخاص بك ومحمية بقفل الجداول، لكنها ليست مشفّرة من طرفك. لا تدخل أرقام حسابات أو آيبان أو بطاقات أو كلمات سر.</div>
   <div class="ph" style="justify-content:flex-start"><button class="btn sm" data-act="pm">◀</button><b>${esc(fmtM(FM))}</b><button class="btn sm" data-act="nm">▶</button></div>
   <div class="stats">
@@ -169,6 +184,7 @@ function renderFinance(el){
   if(act==='pm'){FM=addMonths(FM,-1);return renderFinance(el)}
   if(act==='nm'){FM=addMonths(FM,1);return renderFinance(el)}
   if(act==='ft'){FT=id;return renderFinance(el)}
+  if(act==='fv'){setFV(id);return renderFinance(el)}
   await guard(async()=>{
    const ex=id?ITEMS.find(i=>i.id===id):null;
    if(act==='editTx'){
